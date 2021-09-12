@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-add-topic
+spec:
+  containers:
+  - name: kafka-add-topic
+    image: bitnami/kafka:latest
+    env:
+      - name: KAFKA_CFG_ZOOKEEPER_CONNECT
+        value: "zookeeper-server:2181"
+      - name: ALLOW_PLAINTEXT_LISTENER
+        value: "yes"
+    command: [ "/opt/bitnami/kafka/bin/kafka-topics.sh" ]
+    args: [ "--create", "--zookeeper", "zookeeper-server:2181", "--partitions","1","--replication-factor","1","--topic", "locations" ]
+  restartPolicy: OnFailure

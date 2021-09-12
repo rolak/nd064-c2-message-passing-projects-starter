@@ -1,11 +1,11 @@
 import os
 from typing import List, Type
 
-DB_USERNAME = os.environ["DB_USERNAME"]
-DB_PASSWORD = os.environ["DB_PASSWORD"]
-DB_HOST = os.environ["DB_HOST"]
-DB_PORT = os.environ["DB_PORT"]
-DB_NAME = os.environ["DB_NAME"]
+DB_USERNAME = os.getenv("DB_USERNAME", "ct_admin")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "wowimsosecure")
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "32293")
+DB_NAME = os.getenv("DB_NAME", "geoconnections")
 
 
 class BaseConfig:

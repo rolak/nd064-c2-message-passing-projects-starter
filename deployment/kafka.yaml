@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: zookeeper-server
+  name: zookeeper-server
+spec:
+  ports:
+  - name: "2181"
+    port: 2181
+  selector:
+    service: zookeeper-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: zookeeper-server
+  name: zookeeper-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: zookeeper-server
+  template:
+    metadata:
+      labels:
+        service: zookeeper-server
+    spec:
+      containers:
+      - image:  bitnami/zookeeper:latest
+        name: zookeeper-server
+        imagePullPolicy: Always
+        env:
+        - name: ALLOW_ANONYMOUS_LOGIN
+          value: "yes"
+        - name: ZOOKEEPER_CLIENT_PORT
+          value: "2181"
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: kafka
+  name: kafka
+spec:
+  ports:
+  - name: "9092"
+    port: 9092
+    targetPort: 9092
+    nodePort: 30092
+  selector:
+    service: kafka
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: kafka
+  name: kafka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: kafka
+  template:
+    metadata:
+      labels:
+        service: kafka
+    spec:
+      containers:
+      - image:  bitnami/kafka:latest
+        name: kafka
+        imagePullPolicy: Always
+        env:
+        - name: ALLOW_PLAINTEXT_LISTENER
+          value: "yes"
+        - name: KAFKA_CFG_ZOOKEEPER_CONNECT
+          value: "zookeeper-server:2181"
+      restartPolicy: Always
+---
