@@ -1,0 +1,12 @@
+Refactor to microservice, have goal to design and implement new architecture to be able to handle significant traffic over business event. 
+Traffic will server big amount of location data our application should be prepared. 
+By separation each functionality to separate component we can monitor for resource consumption and we are able to scale this functionality of application that have more demands. 
+Proposed new architecture contains components: 
+
+Frontend – simple application that contain visual part of project don’t contain any state. Will send REST querries to RestContorller 
+RestContorller – python application that expose REST API and translate it to gRPC and Kafka messages. Change main message protocol to gRPC will descries size and latency of traffic inside our k8s cluster. 
+Kafka – message bus system that ensure our flow with proper handling of incoming traffic. Will store message and redistributed to specified component. 
+ConnectionService – python application logic with serve connection of persons. 
+LocationService – python application logic with functionalities responsible for location data.
+PersonService – python application logic with functionalities responsible for person data.
+Database – data base for store persistent data

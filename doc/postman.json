@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "3b1897c3-8400-4fc8-be9f-3683767493e4",
+		"name": "UdaConnect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.202.130:30001/api/locations/75",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"202",
+						"130"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"locations",
+						"75"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.202.130:30001/api/persons/30/connection?start_date=2010-01-01&end_date=2021-01-01&distance=5",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"202",
+						"130"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"persons",
+						"30",
+						"connection"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2010-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2021-01-01"
+						},
+						{
+							"key": "distance",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Persons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.202.130:30001/api/persons",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"202",
+						"130"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.202.130:30001/api/persons/6",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"202",
+						"130"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"persons",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"last_name\": \"Trexler3\",\r\n    \"first_name\": \"Pam2\",\r\n    \"company_name\": \"Hampton, Hampton and McQuill\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.202.130:30001/api/persons",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"202",
+						"130"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Locations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": \"-122.290524\",\r\n    \"creation_time\": \"2020-08-18T10:37:06\",\r\n    \"person_id\": 30,\r\n    \"longitude\": \"37.553441\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.202.130:30001/api/locations",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"202",
+						"130"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

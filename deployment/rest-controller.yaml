@@ -42,7 +42,7 @@ spec:
         - name: GRPC_CONNECTIONS_TARGET
           value: "connection-service:5063"
         - name: KAFKA_SERVER
-          value: "kafka:9092"
+          value: "kafka:9093"
         - name: TOPIC_NAME
           value: "locations"
         - name: DB_USERNAME
